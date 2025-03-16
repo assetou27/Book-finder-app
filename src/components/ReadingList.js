@@ -8,7 +8,9 @@ const ReadingList = () => {
 
   return (
     <div className="container">
-      <h1 className="page-title">📖 My Reading List</h1>
+      <h1 className="page-title">
+        <span role="img" aria-label="Reading List">📖</span> My Reading List
+      </h1>
       
       {readingList.length === 0 ? (
         <div className="empty-list">

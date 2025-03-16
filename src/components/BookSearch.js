@@ -32,7 +32,9 @@ const BookSearch = () => {
 
   return (
     <div className="container">
-      <h1 className="page-title">📚 Book Finder</h1>
+      <h1 className="page-title">
+        <span role="img" aria-label="Book Finder">📚</span> Book Finder
+      </h1>
       <div className="search-container">
         <input
           type="text"
@@ -51,30 +53,18 @@ const BookSearch = () => {
 
       <div className="book-grid">
         {books && books.map((book) => {
-          // Prepare book data
-          const { id } = book;
-          const { 
-            title, 
-            authors = ['Unknown Author'], 
-            description, 
-            imageLinks,
-            publishedDate,
-            publisher
-          } = book.volumeInfo;
-          
-          // Create structured book object for reading list
+          const { id, volumeInfo } = book;
+          const { title, authors = ['Unknown'], imageLinks } = volumeInfo;
+
           const bookForList = {
             id,
             title,
             authors,
-            description: description?.substring(0, 150) + (description?.length > 150 ? '...' : ''),
-            thumbnail: imageLinks?.thumbnail,
-            publishedDate,
-            publisher
+            thumbnail: imageLinks?.thumbnail
           };
-          
+
           const isAdded = addedBooks[id];
-          
+
           return (
             <div key={id} className="book-card">
               <div className="book-image">
@@ -86,8 +76,7 @@ const BookSearch = () => {
               </div>
               <div className="book-details">
                 <h3 className="book-title">{title}</h3>
-                <p className="book-authors">{authors?.join(', ')}</p>
-                {publishedDate && <p className="book-date">Published: {publishedDate}</p>}
+                <p className="book-authors">{authors.join(', ')}</p>
                 <button 
                   onClick={() => handleAddToReadingList(bookForList)}
                   className={`add-button ${isAdded ? 'added' : ''}`}

@@ -8,8 +8,12 @@ function App() {
     <BrowserRouter>
       <header className="app-header">
         <nav className="main-nav">
-          <Link to="/" className="nav-link">📚 Search Books</Link>
-          <Link to="/reading-list" className="nav-link">📖 My Reading List</Link>
+          <Link to="/" className="nav-link">
+            <span role="img" aria-label="Books">📚</span> Search Books
+          </Link>
+          <Link to="/reading-list" className="nav-link">
+            <span role="img" aria-label="Reading List">📖</span> My Reading List
+          </Link>
         </nav>
       </header>
       
@@ -21,7 +25,7 @@ function App() {
       </main>
       
       <footer className="app-footer">
-        <p>Created with React & Redux Toolkit</p>
+        <p>Thank you for using Assetou's Book Finder</p>
       </footer>
     </BrowserRouter>
   );
