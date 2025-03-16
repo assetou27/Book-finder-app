@@ -5,6 +5,7 @@ import { fetchBooks, addToReadingList } from '../redux/slices/bookSlice';
 const BookSearch = () => {
   const [query, setQuery] = useState('');
   const [addedBooks, setAddedBooks] = useState({});
+  const [ratings, setRatings] = useState({});
   const dispatch = useDispatch();
   const { books, status } = useSelector((state) => state.books);
 
@@ -15,19 +16,21 @@ const BookSearch = () => {
   const handleAddToReadingList = (book) => {
     dispatch(addToReadingList(book));
 
-    // Set this book as "added" to show feedback
     setAddedBooks(prev => ({
       ...prev,
       [book.id]: true
     }));
 
-    // Reset the "added" status after 2 seconds
     setTimeout(() => {
       setAddedBooks(prev => ({
         ...prev,
         [book.id]: false
       }));
     }, 2000);
+  };
+
+  const handleRating = (bookId, rating) => {
+    setRatings(prev => ({ ...prev, [bookId]: rating }));
   };
 
   return (
@@ -77,6 +80,20 @@ const BookSearch = () => {
               <div className="book-details">
                 <h3 className="book-title">{title}</h3>
                 <p className="book-authors">{authors.join(', ')}</p>
+
+                {/* Rating System */}
+                <div className="book-rating">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      className={`star ${ratings[id] >= star ? 'selected' : ''}`}
+                      onClick={() => handleRating(id, star)}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+
                 <button 
                   onClick={() => handleAddToReadingList(bookForList)}
                   className={`add-button ${isAdded ? 'added' : ''}`}
