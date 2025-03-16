@@ -1,13 +1,125 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Improve Navigation Spacing */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Add spacing between "Search Books" & "My Reading List" */
+  padding: 15px;
+  background-color: #007bff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav-link {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Improve search bar spacing */
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0; /* Add space above and below search */
+}
+
+.search-input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-button {
+  background: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Improve book layout */
+.book-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Add space between books */
+  padding: 20px;
+}
+
+.book-card {
+  width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background: white;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.book-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.book-authors {
+  color: #666;
+  font-size: 14px;
+}
+
+.book-date {
+  font-size: 12px;
+  color: gray;
+}
+
+/* Improve book rating display */
+.book-rating {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.star {
+  font-size: 20px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.star.selected {
+  color: gold;
+}
+
+/* Style for the add button */
+.add-button {
+  background-color: rgb(12, 85, 202);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #9b30ff;
+}
+
+/* Button changes when added */
+.add-button.added {
+  background-color: #4b0082;
+  cursor: default;
 }

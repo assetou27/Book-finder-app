@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import BookSearch from './components/BookSearch';
+import ReadingList from './components/ReadingList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <header className="app-header">
+        <nav className="main-nav">
+          <Link to="/" className="nav-link">📚 Search Books</Link>
+          <Link to="/reading-list" className="nav-link">📖 My Reading List</Link>
+        </nav>
       </header>
-    </div>
+      
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<BookSearch />} />
+          <Route path="/reading-list" element={<ReadingList />} />
+        </Routes>
+      </main>
+      
+      <footer className="app-footer">
+        <p>Created with React & Redux Toolkit</p>
+      </footer>
+    </BrowserRouter>
   );
 }
 
